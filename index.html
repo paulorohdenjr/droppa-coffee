@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Droppa</title>
+    <title>droppa.</title>
     <link rel="icon" type="image/png" href="images/droppa-logo-white.png">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
@@ -13,12 +13,12 @@
 
    <!-- Tela de Introdução -->
     <div class="intro">
-        <img src="images/droppa-logo-white.png" alt="Droppa Logo" class="intro-logo">
+        <img src="images/droppa-logo-white.png" alt="Logo da Droppa" class="intro-logo">
     </div>        
 
     <header>
         <div class="logo">
-            <img src="images/droppa-logo.png" alt="Droppa Logo">
+            <img src="images/droppa-logo.png" alt="Logo da Droppa">
         </div>
         <div class="hamburger-menu" id="hamburger-menu">
             <span></span>
@@ -27,65 +27,97 @@
         </div>
         <nav id="nav-menu" class="nav-menu">
             <div class="close-menu" id="close-menu">&times;</div>
-            <a href="#concept">Concept</a>
+            <a href="#concept">Conceito</a>
             <a href="#menu">Menu</a>
-            <a href="#about">About Us</a>
-            <a href="#shop">Shop</a>
-            <a href="#contact">Contact</a>
+            <a href="#about">Sobre Nós</a>
+            <a href="#shop">Loja</a>
+            <a href="#contact">Contato</a>
         </nav>
     </header>    
 
     <section class="crafting">
-        <div class="crafting-content">
-            <h1>Crafting Coffee Experiences</h1>
-            <p>From bean to cup, every sip tells a story.</p>
+        <div class="slider">
+            <div class="slides">
+                <div class="slide">
+                    <img src="images/slide1.jpg" alt="Slide 1">
+                </div>
+                <div class="slide">
+                    <img src="images/slide2.jpg" alt="Slide 2">
+                </div>
+                <div class="slide">
+                    <img src="images/slide3.jpg" alt="Slide 3">
+                </div>
+                <div class="slide">
+                    <img src="images/slide4.jpg" alt="Slide 4">
+                </div>
+            </div>
+            <div class="content">
+                <h1>Experiências Artesanais de Café</h1>
+                <p>Do grão à xícara, cada gole conta uma história.</p>
+                <a href="#menu" class="cta-button">Explore Nosso Menu</a>
+            </div>
         </div>
-    </section>
+    </section>    
     
     <section id="concept" class="concept">
         <div class="concept-content">
-            <h2>Our Concept</h2>
-            <p>At Droppa, we believe in quality, simplicity, and sustainability. Discover the art of brewing.</p>
-            <img src="images/concept.jpg" alt="Concept image">
+            <h2>Nosso Conceito</h2>
+            <p>Na Droppa, acreditamos em qualidade, simplicidade e sustentabilidade. Descubra a arte do café.</p>
+        </div>
+        <div class="concept-image">
+            <img src="images/concept.jpg" alt="Imagem do conceito">
         </div>
     </section>
     
+    
     <section id="menu" class="menu">
-        <h2>Our Menu</h2>
+        <div class="menu-header">
+            <h2>Nosso Menu</h2>
+            <p>Descubra nossa seleção de bebidas artesanais de café.</p>
+        </div>
         <div class="menu-grid">
             <div class="menu-item">
-                <img src="images/menu1.jpg" alt="Espresso">
+                <div class="menu-icon">
+                    <img src="images/espresso-icon.png" alt="Ícone de Espresso">
+                </div>
                 <h3>Espresso</h3>
+                <p>Uma dose de espresso rico e encorpado.</p>
             </div>
             <div class="menu-item">
-                <img src="menu2.jpg" alt="Latte">
+                <div class="menu-icon">
+                    <img src="images/latte-icon.png" alt="Ícone de Latte">
+                </div>
                 <h3>Latte</h3>
+                <p>Espresso misturado com leite vaporizado cremoso.</p>
             </div>
             <div class="menu-item">
-                <img src="menu3.jpg" alt="Cappuccino">
+                <div class="menu-icon">
+                    <img src="images/cappuccino-icon.png" alt="Ícone de Cappuccino">
+                </div>
                 <h3>Cappuccino</h3>
+                <p>Um equilíbrio harmonioso de espresso, leite e espuma.</p>
             </div>
         </div>
     </section>
+    
     
     <section id="about" class="about">
         <div class="about-content">
             <h2>Sobre</h2>
-            <p>A Droppa foi criado para proporcionar uma experiência única de café aos entusiastas ao redor do mundo. Cada grão é adquirido de forma ética e meticulosamente preparado.</p>
+            <p>A Droppa foi criada para proporcionar uma experiência única de café aos entusiastas ao redor do mundo. Cada grão é adquirido de forma ética e preparado meticulosamente.</p>
         </div>
     </section>
 
     <section class="our-shop">
         <div class="shop-container">
             <div class="shop-image">
-                <img src="/images/droppa-sign.jpg" alt="Droppa Sign">
+                <img src="/images/droppa-sign.jpg" alt="Placa da Droppa">
             </div>
             <div class="shop-content">
                 <h3>Nosso espaço em Joinville</h3>
                 <p>
                     Localizada no coração da cidade de Joinville, nossa cafeteria é um refúgio para os amantes de café. Situada em um ambiente moderno e acolhedor,
                     oferecemos um espaço perfeito para encontros, trabalho ou simplesmente para apreciar uma boa xícara de café. 
-                    Venha nos visitar na Avenida Central e descubra por que somos a escolha número um para quem busca qualidade e sabor.
                 </p>
             </div>
         </div>
@@ -101,7 +133,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="/images/droppa-logo-white.png" alt="Droppa Logo">
+                <img src="/images/droppa-logo-white.png" alt="Logo da Droppa">
             </div>
             <div class="footer-links">
                 <ul>
