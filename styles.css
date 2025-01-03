@@ -1,0 +1,727 @@
+/* Variables */
+:root {
+    --primary-color: #1a1a1a; /* Deep black for text and accents */
+    --background-color: #f9f9f9; /* Off-white for background */
+    --secondary-color: #8c8c8c; /* Soft gray for details */
+    --font-family: 'Noto Serif JP', serif;
+    --transition-speed: 0.3s;
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: var(--background-color);
+    color: var(--primary-color);
+    overflow-x: hidden;
+}
+
+/* Tela de introdução */
+.intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #022c22; /* Fundo verde */
+    display: flex;
+    justify-content: center; /* Centraliza no eixo Y */
+    align-items: center; /* Centraliza no eixo X */
+    z-index: 9999;
+    opacity: 1; /* Começa visível */
+    transition: opacity 0.5s ease-out; /* Fade rápido */
+}
+
+/* Logo */
+.intro-logo {
+    width: 80px; /* Ajuste do tamanho da logo */
+    height: 80px;
+    animation: drop-animation 1s ease-in-out forwards; /* Animação da logo */
+    opacity: 0;
+}
+
+/* Animação de queda da logo */
+@keyframes drop-animation {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Fade-out */
+.intro.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: var(--background-color);
+    border-bottom: 1px solid var(--secondary-color);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 50px; /* Ajuste o tamanho conforme necessário */
+    width: 45px;
+    display: block;
+}
+
+
+header nav {
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 1rem;
+    transition: color var(--transition-speed);
+}
+
+header nav a:hover {
+    color: var(--secondary-color);
+}
+
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30px; /* Define uma largura adequada */
+    height: 24px; /* Define a altura do menu */
+    cursor: pointer;
+    z-index: 2000;
+}
+
+/* Linhas do Menu Hambúrguer */
+.hamburger-menu span {
+    display: block;
+    width: 100%; /* Alinha as barras com a largura do container */
+    height: 4px; /* Altura das barras */
+    background: #000; /* Cor das barras */
+    border-radius: 2px; /* Arredondamento para um visual mais moderno */
+    transition: all 0.3s ease-in-out;
+    margin: 2px 0; /* Espaçamento entre as barras */
+}
+
+/* Nav Menu */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Hidden by default */
+    width: 250px; /* Adjust the width for partial screen coverage */
+    height: 100vh;
+    background: var(--primary-color); /* Black background */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 60px 20px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
+    transition: right var(--transition-speed) ease-in-out;
+    z-index: 1500;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--background-color);
+    font-size: 1.2rem;
+    text-align: left;
+    transition: color var(--transition-speed);
+}
+
+.nav-menu a:hover {
+    color: var(--secondary-color);
+}
+
+/* Active State for Menu */
+.nav-menu.active {
+    right: 0; /* Slide into view */
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(10px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-10px);
+}
+
+.close-menu {
+    font-size: 1.5rem;
+    color: var(--background-color);
+    cursor: pointer;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+/* Seção Crafting */
+.crafting {
+    background: linear-gradient(to bottom, #01311d, #022c22);
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.crafting h1 {
+    font-size: 3rem;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-bottom: 20px;
+}
+
+.crafting p {
+    font-size: 1.2rem;
+    font-family: 'Source Sans Pro', sans-serif;
+    opacity: 0.9;
+}
+
+/* Seção Concept */
+.concept {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 80px 20px;
+    background: #f8f8f8;
+}
+
+.concept-content {
+    max-width: 1200px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.concept img {
+    flex: 1;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.concept h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #01311d;
+}
+
+.concept p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Seção Menu */
+.menu {
+    background: #fff;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.menu h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #01311d;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.menu-item {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.menu-item h3 {
+    font-size: 1.5rem;
+    color: #01311d;
+}
+
+/* Seção About */
+.about {
+    background: linear-gradient(to bottom, #f4f4f4, #eaeaea);
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #01311d;
+}
+
+.about p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    opacity: 0.9;
+}
+
+
+/* Our Shop Section */
+.our-shop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background-color: #f3f3f3; /* Fundo branco */
+    color: #333; /* Texto preto */
+}
+
+.shop-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    width: 100%;
+    gap: 20px;
+    position: relative;
+}
+
+/* Imagem */
+.shop-image {
+    flex: 1 1 50%;
+}
+
+.shop-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Texto */
+.shop-content {
+    flex: 1 1 50%;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+/* Elemento de ligação */
+.shop-content::before {
+    content: '';
+    position: absolute;
+    left: -20px; /* Lado da imagem */
+    top: 10%;
+    bottom: 10%;
+    width: 5px;
+    background-color: #333; /* Linha preta */
+}
+
+.shop-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.shop-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Footer Geral */
+.footer {
+    background-color: #000; /* Fundo preto */
+    color: #fff; /* Texto branco */
+    padding: 40px 20px;
+    font-family: 'Source Sans Pro', sans-serif; /* Fonte conforme solicitado */
+    font-weight: 700; /* Bold */
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Permite ajustes em múltiplas linhas */
+    justify-content: space-between; /* Espaça uniformemente */
+    max-width: 1100px; /* Limita a largura */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    gap: 20px;
+    align-items: flex-start; /* Alinha ao topo */
+}
+
+.footer-logo {
+    flex: 0 0 auto; /* Mantém o tamanho fixo da logo */
+    align-self: flex-start; /* Alinha ao topo */
+    margin-right: 20px; /* Cria espaço à direita */
+    order: 1; /* Define a ordem como primeiro elemento */
+}
+
+.footer-logo img {
+    width: 24px; /* Ajuste o tamanho conforme necessário */
+    height: 24px;
+    display: block;
+}
+
+/* Links */
+.footer-links {
+    display: flex;
+    flex: 2 1 auto;
+    justify-content: space-between;
+    gap: 40px;
+    order: 2; /* Mantém os links após a logo */
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #bbb;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px; /* Espaçamento entre ícones */
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1 1 200px;
+}
+
+.footer-social a img {
+    width: 24px;
+    height: 24px;
+    transition: opacity 0.3s;
+}
+
+.footer-social a img:hover {
+    opacity: 0.7;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #bbb;
+}
+
+.bottom-bar {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    border-top: 1px solid #ccc;
+}
+
+/* Seção de CTA */
+.cta-section {
+    background: linear-gradient(to bottom, #022c22, #01311d); /* Gradiente para o fundo */
+    color: #fff; /* Texto branco */
+    text-align: center;
+    padding: 60px 20px; /* Espaçamento interno */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cta-content h2 {
+    font-size: 2rem; /* Tamanho do título */
+    font-family: var(--font-family);
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+    line-height: 1.4; /* Altura da linha */
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px; /* Ajuste do tamanho do botão */
+    background-color: #fff; /* Fundo branco */
+    color: #022c22; /* Cor do texto */
+    font-size: 1rem;
+    font-weight: 700;
+    border: 2px solid #fff; /* Borda */
+    border-radius: 50px; /* Bordas arredondadas */
+    text-decoration: none; /* Remove o sublinhado */
+    transition: all 0.3s ease; /* Suavidade na interação */
+}
+
+.cta-button:hover {
+    background-color: transparent; /* Fundo transparente no hover */
+    color: #fff; /* Texto branco no hover */
+    border-color: #fff; /* Borda mantém branco */
+    transform: scale(1.1); /* Efeito de zoom */
+}
+
+
+/* Responsividade */
+
+/* Ajustes para telas menores (tablets e smartphones) */
+@media (max-width: 1024px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        order: 1;
+        justify-content: flex-start;
+    }
+
+    .hamburger-menu {
+        width: 35px; /* Aumenta levemente o tamanho para melhor visualização */
+        height: 28px;
+    }
+
+    .hamburger-menu span {
+        height: 3px; /* Reduz a espessura para um visual mais proporcional */
+    } 
+
+    .hamburger-menu {
+        order: 2;
+        justify-content: flex-end; /* Mantém à direita */
+    }
+
+    .crafting-content h1 {
+        font-size: 2rem;
+    }
+
+    .crafting-content p {
+        font-size: 0.9rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    section p {
+        font-size: 0.95rem;
+    }
+
+    .menu-item h3 {
+        font-size: 1rem;
+    }
+
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 15px; /* Reduz o espaçamento */
+    }
+
+    .footer-logo {
+        flex: 1 1 100%;
+        text-align: center; /* Centraliza a logo */
+    }
+
+    .footer-logo img {
+        width: 3%;
+        margin-bottom: 10px;
+    }
+
+    .footer-links {
+        flex: 2 1 100%;
+        justify-content: space-evenly; /* Espaça uniformemente os links */
+    }
+
+    .footer-social {
+        flex: 1 1 100%;
+        justify-content: center; /* Centraliza os ícones sociais */
+    }
+}
+
+/* Ajustes para telas pequenas (smartphones) */
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: row; /* Mantém os itens em linha */
+    }
+
+    .logo {
+        order: 1; /* Mantém a logo à esquerda */
+        justify-content: flex-start; /* Alinha à esquerda */
+    }
+
+    .hamburger-menu {
+        order: 2; /* Mantém o menu à direita */
+        cursor: pointer;
+    }
+    
+    .crafting {
+        height: 80vh;
+    }
+
+    .crafting-content {
+        padding: 15px 20px;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .footer-content {
+        flex-direction: column; /* Empilha os itens */
+        align-items: center; /* Centraliza os elementos */
+    }
+
+    .footer-logo {
+        align-self: center; /* Centraliza a logo */
+        margin-bottom: 20px;
+    }
+
+    .footer-links {
+        justify-content: center; /* Centraliza os links */
+    }
+
+    .footer-social {
+        justify-content: center; /* Centraliza os ícones sociais */
+    }
+
+    .shop-container {
+        flex-direction: column; /* Empilha a imagem e o texto */
+    }
+
+    .shop-image, .shop-content {
+        flex: 1 1 100%;
+    }
+
+    .image-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .shop-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .shop-content p {
+        font-size: 0.9rem;
+    }
+    
+    
+}
+
+/* Ajustes para telas muito pequenas (menos de 480px) */
+@media (max-width: 480px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between; /* Garante que logo e menu ocupem extremos */
+    }
+
+    .hamburger-menu {
+        width: 30px; /* Ajuste para telas menores */
+        height: 24px;
+    }
+
+    .hamburger-menu span {
+        height: 3px; /* Mantém proporções adequadas */
+    }
+
+    .logo {
+        order: 1;
+        justify-content: flex-start; /* Mantém à esquerda */
+    }
+
+    .hamburger-menu {
+        order: 2;
+        justify-content: flex-end; /* Mantém à direita */
+    }
+
+    .crafting-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .crafting-content p {
+        font-size: 0.8rem;
+    }
+
+    section h2 {
+        font-size: 1.5rem;
+    }
+
+    section p {
+        font-size: 0.85rem;
+    }
+
+    .menu-item img {
+        border-radius: 5px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px; /* Mais espaçamento entre seções */
+    }
+
+    .footer-logo {
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-direction: column; /* Organiza os links em uma única coluna */
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links ul {
+        margin-bottom: 20px;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        font-size: 0.7rem; /* Reduz tamanho do texto */
+    }
+}
+
+
+
