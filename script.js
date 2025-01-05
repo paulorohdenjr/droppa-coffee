@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. Slides
     const slides = document.querySelector(".slides");
     const slideItems = document.querySelectorAll(".slide");
-    const slideCount = slideItems.length; // Garante apenas os slides visíveis
+    const slideCount = slideItems.length; // Total de slides visíveis
     let currentIndex = 0;
 
     // 3. Efeito Parallax (Concept Image)
@@ -23,47 +23,60 @@ document.addEventListener("DOMContentLoaded", () => {
     // **Funções**
 
     // Abrir o menu
-    hamburgerMenu.addEventListener("click", () => {
-        navMenu.classList.add("active");
-    });
+    if (hamburgerMenu && navMenu) {
+        hamburgerMenu.addEventListener("click", () => {
+            navMenu.classList.add("active");
+        });
 
-    // Fechar o menu
-    closeMenu.addEventListener("click", () => {
-        navMenu.classList.remove("active");
-    });
+        closeMenu.addEventListener("click", () => {
+            navMenu.classList.remove("active");
+        });
+    }
 
     // Remover introdução após animação
-    setTimeout(() => {
-        intro.classList.add("fade-out"); // Aplica o fade-out
-        setTimeout(() => intro.remove(), 500); // Remove o elemento após o fade
-    }, 1500); // Duração da animação da logo (1.5s)
+    if (intro) {
+        setTimeout(() => {
+            intro.classList.add("fade-out"); // Aplica o fade-out
+            setTimeout(() => intro.remove(), 500); // Remove o elemento após o fade
+        }, 1500); // Duração da animação da logo (1.5s)
+    }
 
     // Smooth Scroll
     links.forEach(link => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
             const target = document.querySelector(link.getAttribute("href"));
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
+            if (target) {
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
         });
     });
 
-    // Parallax Effect com Centralização
+    // Parallax Effect com Limitação
     window.addEventListener("scroll", () => {
-        if (conceptSection) {
-            const scrollY = window.scrollY;
-            const windowHeight = window.innerHeight;
-            const conceptOffsetTop = conceptSection.offsetTop;
-            const conceptHeight = conceptSection.offsetHeight;
+    if (conceptSection && conceptImage) {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const conceptOffsetTop = conceptSection.offsetTop;
+        const conceptHeight = conceptSection.offsetHeight;
 
-            if (scrollY + windowHeight > conceptOffsetTop && scrollY < conceptOffsetTop + conceptHeight) {
-                const middleOfViewport = scrollY + windowHeight / 2;
-                const middleOfSection = conceptOffsetTop + conceptHeight / 2;
-                const offset = (middleOfViewport - middleOfSection) / 5; // Ajusta o movimento
-                conceptImage.style.transform = `translateY(${offset}px)`; // Aplica o efeito
-            }
+        if (
+            scrollY + windowHeight > conceptOffsetTop &&
+            scrollY < conceptOffsetTop + conceptHeight
+        ) {
+            const middleOfViewport = scrollY + windowHeight / 2;
+            const middleOfSection = conceptOffsetTop + conceptHeight / 2;
+            const offset = Math.min(
+                Math.max((middleOfViewport - middleOfSection) / 5, -30), // Ajusta limites superiores
+                30 // Ajusta limites inferiores
+            );
+            conceptImage.style.transform = `translateY(${offset}px)`; // Aplica o efeito limitado
+        } else {
+            conceptImage.style.transform = "translateY(0)"; // Reseta posição fora da seção
         }
+    }
     });
 
     // Slider automático
@@ -74,11 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2500); // Troca de slides a cada 2.5 segundos
     }
 
-     // Elementos das logos
-     const headerLogo = document.querySelector(".logo img");
-     const footerLogo = document.querySelector(".footer-logo img");
- 
-    // Função para rolar suavemente até o topo
+    // Scroll suave ao clicar nas logos
+    const headerLogo = document.querySelector(".logo img");
+    const footerLogo = document.querySelector(".footer-logo img");
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -86,18 +98,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // Adicionar eventos de clique nas logos
     if (headerLogo) {
         headerLogo.addEventListener("click", (e) => {
-            e.preventDefault(); // Previne comportamento padrão
+            e.preventDefault();
             scrollToTop();
         });
     }
 
     if (footerLogo) {
         footerLogo.addEventListener("click", (e) => {
-            e.preventDefault(); // Previne comportamento padrão
+            e.preventDefault();
             scrollToTop();
         });
     }
+
+    // Cursor pointer para imagens interativas
+    const interactiveImages = document.querySelectorAll("img");
+    interactiveImages.forEach(img => {
+        img.style.cursor = "pointer";
+    });
 });
